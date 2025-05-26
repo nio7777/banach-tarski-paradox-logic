@@ -1,0 +1,36 @@
+// MÓDULO: Definicoes_Base
+ // Propósito: Estabelecer as bases matemáticas e lógicas para a simulação.
+
+ // **TYPE Ponto**: Representa um ponto no espaço 3D com um identificador único e propriedades lógicas.
+-// O 'Valor_Logico_Esfera' define se o ponto pertence à esfera original (ou a uma de suas duplicatas).
++// 'Valor_Logico_Esfera' define se o ponto pertence à esfera original (ou a uma de suas duplicatas).
+ // 'Pertence_A_Peca' classifica o ponto em uma das cinco peças abstratas do paradoxo.
+ TYPE Ponto = {
+     ID: UUID,             // Identificador Único Universal (simula a unicidade de pontos infinitos)
+     Coordenadas: (Real, Real, Real), // (x, y, z) - Valores matemáticos que definem a posição espacial.
+     Valor_Logico_Esfera: Boolean, // TRUE se este ponto faz parte de uma esfera "válida".
++    Valor_Intrinseco: String // NOVO: Um valor ou propriedade abstrata que este ponto carrega (ex: "Essencia_Unica_X")
+     Pertence_A_Peca: Enum<P1, P2, P3, P4, P5> // A qual das 5 peças não mensuráveis o ponto é logicamente classificado.
+ }
+
+ // Rotações_Fundamentais: Matrizes de rotação 3x3.
+ // Essas são as suas sigma e tau que vimos antes.
+ CONST R_Sigma     = Matriz_Rotacao_X(Arcocosseno(1/3))
+ CONST R_Sigma_Inv = Matriz_Rotacao_X(-Arcocosseno(1/3))
+ CONST R_Tau       = Matriz_Rotacao_Y(Arcocosseno(1/3))
+ CONST R_Tau_Inv   = Matriz_Rotacao_Y(-Arcocosseno(1/3))
+
+ // **FUNCTION Gerar_Esfera_Abstrata_Original() -> Conjunto<Ponto>**
+ // Propósito: Conceitualmente "cria" a bola unitária original como um conjunto de pontos abstratos.
+ // Implementa a lógica da Teoria dos Conjuntos (incluindo o Axioma da Escolha) para definir
+ // a esfera e, implicitamente, classificar seus pontos em suas respectivas peças não mensuráveis.
+ FUNCTION Gerar_Esfera_Abstrata_Original(): Conjunto<Ponto>
+     DECLARE Esfera_Original_B3 = EMPTY_SET
+     // A lógica aqui simula a existência de um conjunto infinito de pontos.
+     // Para cada 'p' em B3, 'p.Valor_Logico_Esfera' é definido como TRUE.
++    // Para cada 'p', um 'Valor_Intrinseco' é gerado/atribuído (ex: um hash único, uma string de propriedade).
+     // Além disso, 'p.Pertence_A_Peca' é determinado com base no mapeamento
+     // de pontos para as "palavras" do grupo livre F2, garantindo a
+     // natureza não mensurável das peças.
+     RETURN Esfera_Original_B3
+ END FUNCTION
