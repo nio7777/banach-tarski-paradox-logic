@@ -39,4 +39,4 @@ Sinta-se à vontade para abrir 'issues' (questões) ou 'pull requests' (sugestõ
 
 ---
 
-**Desenvolvido em colaboração com Niko7777 e Gemini (Google AI).**
+**Desenvolvido em colaboração com Nio7777 e Gemini (Google AI).**
